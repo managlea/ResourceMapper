@@ -1,0 +1,24 @@
+{
+  "name": "managlea/resource-mapper",
+  "description": "",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Kauri Kont-Kontson"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Managlea\\Component\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Managlea\\Tests\\": "Tests/"
+    }
+  },
+  "require": {
+    "symfony/yaml": "~2.5"
+  }
+}
