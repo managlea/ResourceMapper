@@ -35,7 +35,7 @@ final class ResourceMapper implements ResourceMapperInterface
      *
      * @return ResourceMapper The *Singleton* instance.
      */
-    private static function getInstance()
+    public static function getInstance()
     {
         if (null === self::$instance) {
             self::$instance = new self();
