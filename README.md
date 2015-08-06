@@ -1,12 +1,20 @@
 # ResourceMapper
 
+ResourceMapper mapps resources and correct entity class and entity manager together
+
 [![Build Status](https://scrutinizer-ci.com/g/managlea/ResourceMapper/badges/build.png?b=master)](https://scrutinizer-ci.com/g/managlea/ResourceMapper/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/managlea/ResourceMapper/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/managlea/ResourceMapper/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/managlea/ResourceMapper/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/managlea/ResourceMapper/?branch=master)
 
 ## Basic usage
 ```php
+// Create new EntityManagerFactory (instanceof Managlea\Component\EntityManagerFactoryInterface)
+$entityManagerFactory = new EntityManagerFactory();
 
-// Get EntityManager class name for "foo" resource
-$entityManagerName = ResourceMapper::getEntityManager('foo');
+// Create new ResourceMapper and pass $entityManagerFactory as parameter
+$resourceMapper = ResourceMapper::initialize($entityManagerFactory);
 
-// $entityManagerName can be bassed to factory to create actual EntityManager
-$entityManager = EntityManagerFactory::create($entityManagerName);
+// Get EntityManager (instanceof Managlea\Component\EntityManagerInterface) for resource
+$entityManager = $resourceMapper->getEntityManager('foo');
+
+// Get objectName (string) for resource which can be used in EntityManager to get entity from db
+$objectName = $resourceMapper->getObjectName('foo');
+$entity = $entityManager->get($objectName, 1);
