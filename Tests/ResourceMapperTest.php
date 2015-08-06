@@ -13,7 +13,7 @@ class ResourceMapperTest extends \PHPUnit_Framework_TestCase
      */
     public function getEntityManagerMappingMissing()
     {
-        ResourceMapper::getEntityManager('foo');
+        ResourceMapper::getEntityManagerName('foo');
     }
 
     /**
@@ -22,14 +22,14 @@ class ResourceMapperTest extends \PHPUnit_Framework_TestCase
     public function getEntityManager()
     {
         // Get default EntityManager
-        $entityManager = ResourceMapper::getEntityManager('bar');
+        $entityManager = ResourceMapper::getEntityManagerName('bar');
         $this->assertEquals($entityManager, 'DoctrineEntityManager');
 
-        $entityManager = ResourceMapper::getEntityManager('baz');
+        $entityManager = ResourceMapper::getEntityManagerName('baz');
         $this->assertEquals($entityManager, 'DoctrineEntityManager');
 
         // Get customer EntityManager
-        $entityManager = ResourceMapper::getEntityManager('zoo');
+        $entityManager = ResourceMapper::getEntityManagerName('zoo');
         $this->assertEquals($entityManager, 'Zoo');
     }
 

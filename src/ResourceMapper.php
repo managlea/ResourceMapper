@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kaurikontkontson
- * Date: 01/08/15
- * Time: 21:54
- */
 
 namespace Managlea\Component;
 
@@ -81,10 +75,10 @@ final class ResourceMapper implements ResourceMapperInterface
 
     /**
      * @param $resourceName
-     * @return mixed
+     * @return string
      * @throws \Exception
      */
-    public static function getEntityManager($resourceName)
+    public static function getEntityManagerName($resourceName)
     {
         $instance = self::getInstance();
         $resourceConf = $instance->getResourceMappingConf($resourceName);
