@@ -1,6 +1,6 @@
 # ResourceMapper
 
-ResourceMapper mapps resources and correct entity class and entity manager together
+ResourceMapper maps resources with correct entity class and entity manager
 
 [![Build Status](https://scrutinizer-ci.com/g/managlea/ResourceMapper/badges/build.png?b=master)](https://scrutinizer-ci.com/g/managlea/ResourceMapper/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/managlea/ResourceMapper/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/managlea/ResourceMapper/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/managlea/ResourceMapper/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/managlea/ResourceMapper/?branch=master)
 
@@ -21,7 +21,7 @@ mapping:
 // Create new EntityManagerFactory (instanceof Managlea\Component\EntityManagerFactoryInterface)
 $entityManagerFactory = new EntityManagerFactory();
 
-// Create new ResourceMapper and pass $entityManagerFactory in as parameter
+// Create new ResourceMapper by passing $entityManagerFactory in as parameter
 $resourceMapper = ResourceMapper::initialize($entityManagerFactory);
 
 // Get EntityManager (instanceof Managlea\Component\EntityManagerInterface) for resource
