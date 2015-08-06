@@ -27,7 +27,9 @@ $resourceMapper = ResourceMapper::initialize($entityManagerFactory);
 // Get EntityManager (instanceof Managlea\Component\EntityManagerInterface) for resource
 $entityManager = $resourceMapper->getEntityManager('foo');
 
-// Get objectName (string) for resource which can be used in EntityManager to get entity from db
+// Get objectName (string) for resource
 $objectName = $resourceMapper->getObjectName('foo');
+
+// Use objectName in entity manager to retrieve entity (object)
 $entity = $entityManager->get($objectName, 1);
 ```
