@@ -20,17 +20,14 @@ mapping:
 ```
 ### Code execution
 ```php
-// Create new EntityManagerFactory (instanceof Managlea\Component\EntityManagerFactoryInterface)
-$entityManagerFactory = new EntityManagerFactory();
+// Get entityManagerName (string) for resource
+$entityManagerName = ResourceMapper::getEntityManagerName('foo');
 
-// Create new ResourceMapper by passing $entityManagerFactory in as parameter
-$resourceMapper = ResourceMapper::initialize($entityManagerFactory);
-
-// Get EntityManager (instanceof Managlea\Component\EntityManagerInterface) for resource
-$entityManager = $resourceMapper->getEntityManager('foo');
+// Create new EntityManager (instanceof Managlea\Component\EntityManagerInterface) by name
+$entityManager = new EntityManagerFactory::create($entityManagerName);
 
 // Get objectName (string) for resource
-$objectName = $resourceMapper->getObjectName('foo');
+$objectName = ResourceMapper::getObjectName('foo');
 
 // Use objectName in entity manager to retrieve entity (object)
 $entity = $entityManager->get($objectName, 1);
