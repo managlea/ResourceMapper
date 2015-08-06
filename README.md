@@ -5,8 +5,10 @@ ResourceMapper maps resources with correct entity class and entity manager
 [![Build Status](https://scrutinizer-ci.com/g/managlea/ResourceMapper/badges/build.png?b=master)](https://scrutinizer-ci.com/g/managlea/ResourceMapper/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/managlea/ResourceMapper/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/managlea/ResourceMapper/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/managlea/ResourceMapper/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/managlea/ResourceMapper/?branch=master)
 
 ## Basic usage
+Read more about [Managlea\Component\EntityManager](https://github.com/managlea/EntityManager) which is required by this package.
+### Configuration file
 ```yaml
-# resource_mapping.yml - configuration file
+# resource_mapping.yml
 
 default_entity_manager: Managlea\Component\DoctrineEntityManager
 mapping:
@@ -16,7 +18,7 @@ mapping:
     entity_manager: BarEntityManager
     object_name: Entities\Bar
 ```
-
+### Code execution
 ```php
 // Create new EntityManagerFactory (instanceof Managlea\Component\EntityManagerFactoryInterface)
 $entityManagerFactory = new EntityManagerFactory();
