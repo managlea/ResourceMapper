@@ -9,32 +9,46 @@ use Managlea\Component\ResourceMapperInterface;
 class ResourceMapperTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @var ResourceMapperInterface
+     */
+    private $resourceMapper;
+
+    public function setUp()
+    {
+        $this->resourceMapper = new ResourceMapper;
+    }
+
+    /**
      * @test
      * @expectedException \Exception
      */
     public function getEntityManagerMappingMissing()
     {
-        $resourceMapper = new ResourceMapper;
-        $resourceMapper->getEntityManagerName('foo');
+        $this->resourceMapper->getEntityManagerName('foo');
     }
 
     /**
      * @test
      */
-    public function getEntityManager()
+    public function newResourceMapper()
     {
-        $resourceMapper = new ResourceMapper;
-        $this->assertTrue($resourceMapper instanceof ResourceMapperInterface);
+        $this->assertTrue($this->resourceMapper instanceof ResourceMapperInterface);
+    }
 
+    /**
+     * @test
+     */
+    public function getEntityManagerName()
+    {
         // Get default EntityManager
-        $entityManager = $resourceMapper->getEntityManagerName('bar');
+        $entityManager = $this->resourceMapper->getEntityManagerName('bar');
         $this->assertEquals($entityManager, 'DoctrineEntityManager');
 
-        $entityManager = $resourceMapper->getEntityManagerName('baz');
+        $entityManager = $this->resourceMapper->getEntityManagerName('baz');
         $this->assertEquals($entityManager, 'DoctrineEntityManager');
 
         // Get customer EntityManager
-        $entityManager = $resourceMapper->getEntityManagerName('zoo');
+        $entityManager = $this->resourceMapper->getEntityManagerName('zoo');
         $this->assertEquals($entityManager, 'Zoo');
     }
 
@@ -43,16 +57,13 @@ class ResourceMapperTest extends \PHPUnit_Framework_TestCase
      */
     public function getObjectName()
     {
-        $resourceMapper = new ResourceMapper;
-        $this->assertTrue($resourceMapper instanceof ResourceMapperInterface);
-
-        $entityManager = $resourceMapper->getObjectName('bar');
+        $entityManager = $this->resourceMapper->getObjectName('bar');
         $this->assertEquals($entityManager, 'Entities\Product');
 
-        $entityManager = $resourceMapper->getObjectName('baz');
+        $entityManager = $this->resourceMapper->getObjectName('baz');
         $this->assertEquals($entityManager, 'baz');
 
-        $entityManager = $resourceMapper->getObjectName('zoo');
+        $entityManager = $this->resourceMapper->getObjectName('zoo');
         $this->assertEquals($entityManager, 'Entities\Product');
     }
 }
