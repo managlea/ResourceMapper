@@ -19,14 +19,17 @@ mapping:
 ```
 ### Code execution
 ```php
+// Create new ResourceMapper
+$resourceMapper = new ResourceMapper;
+
 // Get entityManagerName (string) for resource
-$entityManagerName = ResourceMapper::getEntityManagerName('foo');
+$entityManagerName = $resourceMapper->getEntityManagerName('foo');
 
 // Create new EntityManager (instanceof Managlea\Component\EntityManagerInterface) by name
 $entityManager = new EntityManagerFactory::create($entityManagerName);
 
 // Get objectName (string) for resource
-$objectName = ResourceMapper::getObjectName('foo');
+$objectName = $resourceMapper->getObjectName('foo');
 
 // Use objectName in entity manager to retrieve entity (object)
 $entity = $entityManager->get($objectName, 1);

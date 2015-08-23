@@ -12,10 +12,6 @@ use Symfony\Component\Yaml\Yaml;
 final class ResourceMapper implements ResourceMapperInterface
 {
     /**
-     * @var ResourceMapper The reference to *ResourceMapper* instance of this class
-     */
-    private static $instance;
-    /**
      * @var array
      */
     private $mapping;
@@ -25,25 +21,11 @@ final class ResourceMapper implements ResourceMapperInterface
     private $defaultEntityManager;
 
     /**
-     * Returns the *ResourceMapper* instance of this class.
-     *
-     * @return ResourceMapper The *Singleton* instance.
+     * Initialize new ResourceMapper and set configs for usage
      */
-    public static function getInstance()
+    public function __construct()
     {
-        if (null === self::$instance) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
-    /**
-     *
-     */
-    private function __construct()
-    {
-        $conf = self::setConfig();
+        $conf = $this->setConfig();
         $this->defaultEntityManager = $conf['default_entity_manager'];
         $this->mapping = $conf['mapping'];
     }
@@ -55,18 +37,17 @@ final class ResourceMapper implements ResourceMapperInterface
      */
     private function getResourceMappingConf($resourceName)
     {
-        $instance = self::getInstance();
-        if (!array_key_exists($resourceName, $instance->mapping)) {
+        if (!array_key_exists($resourceName, $this->mapping)) {
             throw new \Exception(sprintf('Mapping configuration missing for resource: "%s"', $resourceName));
         }
 
-        return $instance->mapping[$resourceName];
+        return $this->mapping[$resourceName];
     }
 
     /**
      * @return array
      */
-    private static function setConfig()
+    private function setConfig()
     {
         $configValues = Yaml::parse(file_get_contents(__DIR__ . '/../config/resource_mapping.yml'));
 
@@ -78,14 +59,13 @@ final class ResourceMapper implements ResourceMapperInterface
      * @return string
      * @throws \Exception
      */
-    public static function getEntityManagerName($resourceName)
+    public function getEntityManagerName($resourceName)
     {
-        $instance = self::getInstance();
-        $resourceConf = $instance->getResourceMappingConf($resourceName);
+        $resourceConf = $this->getResourceMappingConf($resourceName);
         if (is_array($resourceConf)) {
             $entityManagerName = $resourceConf['entity_manager'];
         } else {
-            $entityManagerName = $instance->defaultEntityManager;
+            $entityManagerName = $this->defaultEntityManager;
         }
 
         return $entityManagerName;
@@ -96,10 +76,9 @@ final class ResourceMapper implements ResourceMapperInterface
      * @return string
      * @throws \Exception
      */
-    public static function getObjectName($resourceName)
+    public function getObjectName($resourceName)
     {
-        $instance = self::getInstance();
-        $resourceConf = $instance->getResourceMappingConf($resourceName);
+        $resourceConf = $this->getResourceMappingConf($resourceName);
         if (is_array($resourceConf)) {
             if (!array_key_exists('object_name', $resourceConf)) {
                 $objectName = $resourceName;
