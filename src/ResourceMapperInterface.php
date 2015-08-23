@@ -9,11 +9,11 @@ interface ResourceMapperInterface
      * @param string $resourceName
      * @return string
      */
-    public static function getEntityManagerName($resourceName);
+    public function getEntityManagerName($resourceName);
 
     /**
      * @param string $resourceName
      * @return string
      */
-    public static function getObjectName($resourceName);
+    public function getObjectName($resourceName);
 }
