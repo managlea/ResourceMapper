@@ -6,7 +6,7 @@ ResourceMapper maps resources with correct entity class and entity manager
 [![Code Climate](https://codeclimate.com/github/managlea/ResourceMapper/badges/gpa.svg)](https://codeclimate.com/github/managlea/ResourceMapper) [![Test Coverage](https://codeclimate.com/github/managlea/ResourceMapper/badges/coverage.svg)](https://codeclimate.com/github/managlea/ResourceMapper/coverage)  
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/22340bb0-470c-4779-b4c2-39eccd7fe471/mini.png)](https://insight.sensiolabs.com/projects/22340bb0-470c-4779-b4c2-39eccd7fe471)  
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/5b8b9ea227c5436f82d1ff3da360e40a)](https://www.codacy.com/app/Managlea/ResourceMapper)  
-[![Build Status](https://travis-ci.org/managlea/ResourceMapper.svg?branch=master)](https://travis-ci.org/managlea/ResourceMapper)
+[![Build Status](https://travis-ci.org/managlea/ResourceMapper.svg?branch=master)](https://travis-ci.org/managlea/ResourceMapper) [ ![Codeship Status for managlea/ResourceMapper](https://codeship.com/projects/637c0f90-cf5f-0133-3edd-0ecdb99964fb/status?branch=master)](https://codeship.com/projects/141211) [![Circle CI](https://circleci.com/gh/managlea/ResourceMapper/tree/master.svg?style=svg)](https://circleci.com/gh/managlea/ResourceMapper/tree/master)
 
 ## Basic usage
 ### Configuration file
