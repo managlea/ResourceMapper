@@ -63,12 +63,10 @@ final class ResourceMapper implements ResourceMapperInterface
     {
         $resourceConf = $this->getResourceMappingConf($resourceName);
         if (is_array($resourceConf)) {
-            $entityManagerName = $resourceConf['entity_manager'];
-        } else {
-            $entityManagerName = $this->defaultEntityManager;
+            return $resourceConf['entity_manager'];
         }
 
-        return $entityManagerName;
+        return $this->defaultEntityManager;
     }
 
     /**
