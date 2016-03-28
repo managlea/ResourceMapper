@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Managlea\Component;
 
 
@@ -35,7 +37,7 @@ final class ResourceMapper implements ResourceMapperInterface
      * @return mixed
      * @throws \Exception
      */
-    private function getResourceMappingConf($resourceName)
+    private function getResourceMappingConf(string $resourceName)
     {
         if (!array_key_exists($resourceName, $this->mapping)) {
             throw new \Exception(sprintf('Mapping configuration missing for resource: "%s"', $resourceName));
@@ -47,7 +49,7 @@ final class ResourceMapper implements ResourceMapperInterface
     /**
      * @return array
      */
-    private function setConfig()
+    private function setConfig() : array
     {
         $configValues = Yaml::parse(file_get_contents(__DIR__ . '/../config/resource_mapping.yml'));
 
@@ -59,7 +61,7 @@ final class ResourceMapper implements ResourceMapperInterface
      * @return string
      * @throws \Exception
      */
-    public function getEntityManagerName($resourceName)
+    public function getEntityManagerName(string $resourceName) : string
     {
         $resourceConf = $this->getResourceMappingConf($resourceName);
         if (is_array($resourceConf)) {
@@ -74,7 +76,7 @@ final class ResourceMapper implements ResourceMapperInterface
      * @return string
      * @throws \Exception
      */
-    public function getObjectName($resourceName)
+    public function getObjectName(string $resourceName) : string
     {
         $resourceConf = $this->getResourceMappingConf($resourceName);
         if (is_array($resourceConf)) {
